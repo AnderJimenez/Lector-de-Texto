@@ -1,0 +1,79 @@
+# AND - ambos eventos deben ocurrir
+llueve y hace frio
+estudio y apruebo el examen
+corro y llego temprano
+leo y comprendo el texto
+trabajo y ahorro dinero
+duermo y descanso bien
+canto y bailo en la fiesta
+el perro corre y el gato duerme
+ana cocina y pedro limpia
+el tren llega y el autobus sale
+la planta crece y recibe agua
+el equipo practica y mejora
+
+# OR - al menos uno de los eventos ocurre
+llueve o hace calor
+estudio o trabajo esta tarde
+corro o camino al parque
+leo o escucho musica
+ana cocina o pedro compra comida
+el perro ladra o el gato maulla
+el tren llega o el autobus sale
+la planta crece o pierde sus hojas
+el equipo practica o descansa
+viajamos hoy o salimos manana
+compramos pan o preparamos arroz
+la alarma suena o alguien llama
+
+# IMPLICACION - antecedente falso o conclusion verdadera
+llueve entonces llevo paraguas
+estudio entonces apruebo el examen
+corro entonces llego temprano
+leo entonces comprendo el texto
+trabajo por lo tanto ahorro dinero
+duermo por lo tanto descanso bien
+canto entonces bailo en la fiesta
+el perro corre entonces el gato se despierta
+ana cocina entonces pedro limpia
+el tren llega por lo tanto el autobus sale
+la planta recibe agua entonces crece
+el equipo practica por lo tanto mejora
+
+# BICONDICIONAL - ambos eventos son verdaderos o ambos falsos
+llueve dado que el suelo esta mojado
+estudio ya que apruebo el examen
+corro dado que llego temprano
+leo ya que comprendo el texto
+trabajo dado que ahorro dinero
+duermo ya que descanso bien
+canto dado que bailo en la fiesta
+el perro corre dado que el gato se despierta
+ana cocina ya que pedro limpia
+el tren llega dado que el autobus sale
+la planta crece ya que recibe agua
+el equipo practica dado que mejora
+
+# NI - ambos eventos son falsos
+no llueve ni hace frio
+no estudio ni apruebo el examen
+no corro ni llego temprano
+no leo ni comprendo el texto
+no trabajo ni ahorro dinero
+no duermo ni descanso bien
+no canto ni bailo en la fiesta
+el perro no corre ni el gato se despierta
+ana no cocina ni pedro limpia
+el tren no llega ni el autobus sale
+la planta no crece ni recibe agua
+el equipo no practica ni mejora
+
+# OPERADORES SIMBOLICOS - ejemplos equivalentes
+A AND B
+C OR D
+E -> F
+G <-> H
+I(AND)J
+(K OR L) -> M
+N AND omega <-> P
+Q NI R
