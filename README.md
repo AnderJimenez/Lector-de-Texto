@@ -1,48 +1,47 @@
-# Lector de texto en español
+# Revisor de reglas proposicionales
 
-Procesador de consola que analiza oraciones en español y las devuelve con
-colores según una clasificación léxica sencilla. La salida distingue sujeto,
-preposiciones, nexos, verbos, verbos en pasado, artículos, pronombres y
-adverbios. La opción `--arbol` muestra además un árbol semántico simplificado
-en el orden de la oración.
+Programa de consola que recibe una base de conocimiento escrita en español,
+con una regla o hecho por línea. Identifica las proposiciones simples,
+conserva el mismo átomo cuando el significado se repite y genera un tableau
+semántico para comprobar si todas las reglas pueden ser verdaderas a la vez.
 
-También evalúa expresiones de lógica proposicional escritas con `AND`, `OR`,
-`->` y `<->`. Acepta tanto `A AND B` como la notación `A(AND)B`, y muestra
-su tabla de verdad:
+## Conectivos reconocidos
 
-- `A AND B`: ambos eventos ocurren.
-- `A OR B`: al menos uno de los eventos ocurre.
-- `A -> B`: la implicación solo es falsa cuando A es verdadera y B es falsa.
-- `A <-> B`: ambos sucesos tienen el mismo valor de verdad.
+| Texto | Símbolo |
+| --- | --- |
+| y, e | ∧ |
+| o, u | ∨ |
+| no | ¬ |
+| si... entonces | → |
+| si y solo si | ↔ |
 
-Las fórmulas deben escribirse en una línea independiente usando proposiciones
-simples (por ejemplo, `A`, `B`, `llueve`, `estudio`) y los operadores
-anteriores. Se aceptan operadores escritos en mayúsculas o minúsculas,
-paréntesis y espacios:
+También se aceptan `AND`, `OR`, `NOT`, `->` y `<->`. Las proposiciones pueden
+tener varias palabras, por ejemplo `es de día` o `voy a trabajar`.
+`ni` se interpreta como una relación verdadera únicamente cuando ambas
+proposiciones son falsas.
 
-```text
-A AND B
-a and b
-(A OR B) -> C
-A(AND)B
-```
+## Ejemplo
 
-También se pueden usar conectores en español:
+Entrada:
 
 ```text
-llueve y hace frío
-llueve o hace calor
-llueve entonces llevo paraguas
-llueve por lo tanto llevo paraguas
-llueve dado que el suelo está mojado
-llueve ya que el suelo está mojado
+Si es de día, entonces voy a trabajar
+Si llueve, entonces no voy a trabajar
+Es de día
 ```
 
-El programa interpreta `y` como `AND`, `o` como `OR`, `entonces` y
-`por lo tanto` como `->`, y `dado que` y `ya que` como `<->`, según las
-reglas solicitadas. `ni` se interpreta como una relación de negación conjunta:
-solo es verdadera cuando ambas proposiciones son falsas. Las proposiciones
-pueden contener varias palabras.
+La salida muestra:
+
+1. La tabla de átomos, por ejemplo `p = es de día` y `q = voy a trabajar`.
+2. Cada regla convertida a una fórmula (`R1: p → q`).
+3. Las ramas del tableau, con las fórmulas aplicadas.
+4. Las ramas cerradas con `✕` cuando contienen un átomo y su negación.
+5. Las ramas abiertas como modelos (`p = V, q = V, r = F`).
+6. La conclusión de satisfacibilidad de la base de conocimiento.
+
+El tableau aplica las expansiones de `∧`, `¬∨`, `¬→`, `¬¬`, `∨`, `→`,
+`↔`, `NI`, `¬∧` y `¬↔` mediante las reglas equivalentes para fórmulas con signo
+verdadero o falso.
 
 ## Compilar
 
@@ -52,7 +51,7 @@ Con un compilador compatible con C++17:
 g++ -std=c++17 -Wall -Wextra -pedantic Base.cpp -o lector
 ```
 
-En Windows también puede usarse:
+En Windows:
 
 ```text
 g++ -std=c++17 -Wall -Wextra -pedantic Base.cpp -o lector.exe
@@ -60,40 +59,63 @@ g++ -std=c++17 -Wall -Wextra -pedantic Base.cpp -o lector.exe
 
 ## Usar
 
-```text
-lector
-lector --arbol
-lector --sin-color
-```
-
-Escriba una oración y presione Enter. El programa conserva la puntuación y
-procesa cada línea de forma independiente. La clasificación es heurística:
-reconoce un vocabulario base y terminaciones verbales frecuentes, por lo que
-puede ampliarse en `Base.cpp` para cubrir vocabulario especializado.
-
-Las expresiones lógicas se detectan automáticamente cuando contienen alguno de
-los operadores anteriores.
-
-El archivo `Frases` contiene ejemplos agrupados por relación. Las líneas que
-comienzan con `#` son encabezados y se ignoran al ejecutar el archivo:
+El modo predeterminado revisa cada frase inmediatamente. Escriba una regla en
+una línea y recibirá su tableau antes de introducir la siguiente; ya no es
+necesario esperar hasta `Ctrl+Z`:
 
 ```powershell
-Get-Content -Encoding UTF8 .\Frases | .\lector.exe --sin-color
+Get-Content -Encoding UTF8 .\reglas.txt | .\lector.exe --sin-color
 ```
 
-## Base de datos de palabras
+Las frases sin un conector reconocido se anuncian inmediatamente como no
+detectadas. Los tres documentos de referencia se encuentran en [Reglas](./Reglas);
+la implementación aplica sus reglas de descomposición lineales, bifurcaciones,
+cierre de ramas por contradicción y modelos de ramas abiertas.
 
-El programa mantiene las palabras personalizadas en `palabras.txt`, en el
-mismo directorio desde donde se ejecuta. Se cargan al iniciar y se guardan
-automáticamente con estos comandos:
+Para consultar la ayuda:
 
 ```text
-/agregar verbo caminar
-/agregar adverbio rápidamente
-/agregar sujeto lucía
+lector --ayuda
 ```
 
-Después de agregar una palabra, las siguientes oraciones de la misma ejecución
-la reconocerán con la categoría correspondiente. El archivo usa el formato
-`tipo|palabra`, una entrada por línea. Puede consultar la ayuda desde el
-programa con `/ayuda`.
+El modo anterior de clasificación léxica se conserva con `--texto`:
+
+```text
+lector --texto --sin-color
+```
+
+## Ventana gráfica
+
+La interfaz gráfica se inicia desde [Base.cpp](./Base.cpp), que incluye
+[Ventana.cpp](./Ventana.cpp) como implementación secundaria. En Windows,
+compílala con MinGW:
+
+```powershell
+g++ -std=c++17 -mwindows -Wall -Wextra -pedantic Base.cpp -o lector.exe
+.\lector.exe
+```
+
+Escribe una frase como `llueve y hace frío`, pulsa **Analizar** y la ventana
+mostrará la relación y su tabla de verdad. También acepta `o`, `entonces`,
+`dado que`, `ya que`, `ni`, `AND`, `OR`, `->` y `<->`. La interfaz usa Unicode
+de Windows, por lo que acepta frases con acentos como `llueve y está frío`.
+
+El archivo [Frases.txt](./Frases.txt) contiene ejemplos de oraciones y las
+líneas que empiezan con `#` se ignoran. Para procesarlo:
+
+```powershell
+Get-Content -Encoding UTF8 .\Frases.txt | .\lector.exe --sin-color
+```
+
+La implementación principal del árbol está en
+[ArbolSemantico.cpp](./ArbolSemantico.cpp). `Base.cpp` es un punto de entrada
+compatible que incluye ese archivo, por lo que ambos comandos siguientes
+generan el mismo programa:
+
+```powershell
+g++ -std=c++17 -Wall -Wextra -pedantic Base.cpp -o lector.exe
+g++ -std=c++17 -Wall -Wextra -pedantic ArbolSemantico.cpp -o arbol.exe
+```
+
+Si una línea no contiene un conector lógico reconocido, el programa informa
+que no detectó una relación en vez de tratarla silenciosamente como una regla.

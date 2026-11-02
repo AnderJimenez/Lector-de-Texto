@@ -1,79 +1,131 @@
-# AND - ambos eventos deben ocurrir
-llueve y hace frio
-estudio y apruebo el examen
-corro y llego temprano
-leo y comprendo el texto
-trabajo y ahorro dinero
-duermo y descanso bien
-canto y bailo en la fiesta
-el perro corre y el gato duerme
-ana cocina y pedro limpia
-el tren llega y el autobus sale
-la planta crece y recibe agua
-el equipo practica y mejora
+# 2 RELACIONES
+Trabajo y ahorro o descanso
+Estudio y apruebo o celebro
+Corro o camino y llego temprano
+Leo y comprendo o aprendo
+Cocino o compro comida y como
+Si duermo, descanso o sueño
+Canto o bailo y sonrío
+Viajo y llego o regreso
+Llueve o nieva y hace frío
+Crezco y mejoro o practico
 
-# OR - al menos uno de los eventos ocurre
-llueve o hace calor
-estudio o trabajo esta tarde
-corro o camino al parque
-leo o escucho musica
-ana cocina o pedro compra comida
-el perro ladra o el gato maulla
-el tren llega o el autobus sale
-la planta crece o pierde sus hojas
-el equipo practica o descansa
-viajamos hoy o salimos manana
-compramos pan o preparamos arroz
-la alarma suena o alguien llama
+# 3 RELACIONES
+(Trabajo y ahorro) o descanso
+(Estudio y leo) o apruebo
+Corro o camino y llego temprano
+Leo y comprendo o aprendo
+Cocino o compro comida y como
+Si duermo, descanso o sueño
+Canto o bailo y sonrío
+Viajo y llego o regreso
+Llueve o nieva y hace frío
+Crezco y mejoro o practico
 
-# IMPLICACION - antecedente falso o conclusion verdadera
-llueve entonces llevo paraguas
-estudio entonces apruebo el examen
-corro entonces llego temprano
-leo entonces comprendo el texto
-trabajo por lo tanto ahorro dinero
-duermo por lo tanto descanso bien
-canto entonces bailo en la fiesta
-el perro corre entonces el gato se despierta
-ana cocina entonces pedro limpia
-el tren llega por lo tanto el autobus sale
-la planta recibe agua entonces crece
-el equipo practica por lo tanto mejora
+# 4 RELACIONES
+(Trabajo y ahorro) o descanso y pago mis cuentas
+(Estudio y leo) o apruebo y celebro
+Corro o camino y llego temprano o regreso
+Leo y comprendo o aprendo y recuerdo
+Cocino o compro comida y como o comparto
+Si duermo, descanso o sueño y despierto
+Canto o bailo y sonrío o disfruto
+Viajo y llego o regreso y descanso
+Llueve o nieva y hace frío o llevo un abrigo
+Crezco y mejoro o practico y gano
 
-# BICONDICIONAL - ambos eventos son verdaderos o ambos falsos
-llueve dado que el suelo esta mojado
-estudio ya que apruebo el examen
-corro dado que llego temprano
-leo ya que comprendo el texto
-trabajo dado que ahorro dinero
-duermo ya que descanso bien
-canto dado que bailo en la fiesta
-el perro corre dado que el gato se despierta
-ana cocina ya que pedro limpia
-el tren llega dado que el autobus sale
-la planta crece ya que recibe agua
-el equipo practica dado que mejora
+# 5 RELACIONES
+((Trabajo y ahorro) o descanso) y pago mis cuentas o compro comida
+((Estudio y leo) o apruebo) y celebro o aprendo
+((Corro o camino) y llego temprano) o regreso y descanso
+((Leo y comprendo) o aprendo) y recuerdo o escribo
+((Cocino o compro comida) y como) o comparto y limpio
+((Duermo y descanso) o sueño) y despierto o camino
+((Canto o bailo) y sonrío) o disfruto y celebro
+((Viajo y llego) o regreso) y descanso o trabajo
+((Llueve o nieva) y hace frío) o llevo un abrigo y camino
+((Crezco y mejoro) o practico) y gano o celebro
 
-# NI - ambos eventos son falsos
-no llueve ni hace frio
-no estudio ni apruebo el examen
-no corro ni llego temprano
-no leo ni comprendo el texto
-no trabajo ni ahorro dinero
-no duermo ni descanso bien
-no canto ni bailo en la fiesta
-el perro no corre ni el gato se despierta
-ana no cocina ni pedro limpia
-el tren no llega ni el autobus sale
-la planta no crece ni recibe agua
-el equipo no practica ni mejora
+# IMPLICACIÓN
+Si trabajo, ahorro y pago mis cuentas
+Si estudio, apruebo o celebro
+Si corro, llego temprano y regreso
+Si leo, comprendo o aprendo
+Si cocino, como y comparto
+Si llueve, llevo un abrigo y camino
+Si duermo, descanso y sueño
+Si canto, bailo o sonrío
+Si viajo, llego y regreso
+Si practico, mejoro y gano
 
-# OPERADORES SIMBOLICOS - ejemplos equivalentes
-A AND B
-C OR D
-E -> F
-G <-> H
-I(AND)J
-(K OR L) -> M
-N AND omega <-> P
-Q NI R
+# BICONDICIONAL
+Trabajo dado que ahorro y pago mis cuentas
+Estudio ya que apruebo y celebro
+Corro dado que llego temprano y regreso
+Leo ya que comprendo y aprendo
+
+# 1 RELACION
+Ana estudia y aprende
+Pedro corre o camina
+Si llueve, llevo paraguas
+María canta y sonríe
+El perro duerme o descansa
+Si trabajo, ahorro
+Carlos lee y comprende
+La planta crece o florece
+Si estudio, apruebo
+El tren llega y sale
+
+# 2 RELACIONES
+Ana estudia y aprende o descansa
+Pedro corre o camina y llega
+Si llueve, llevo paraguas y cierro la ventana
+María canta y sonríe o baila
+El perro duerme o descansa y sueña
+Si trabajo, ahorro y pago
+Carlos lee y comprende o escribe
+La planta crece o florece y recibe agua
+Si estudio, apruebo y celebro
+El tren llega y sale o espera
+
+# 3 RELACIONES
+(Ana estudia y aprende) o descansa
+Pedro corre o camina y llega temprano
+Si llueve, llevo paraguas y cierro la ventana o regreso
+María canta y sonríe o baila y disfruta
+El perro duerme o descansa y sueña o despierta
+Si trabajo, ahorro y pago o descanso
+Carlos lee y comprende o escribe y recuerda
+La planta crece o florece y recibe agua o sol
+Si estudio, apruebo y celebro o descanso
+El tren llega y sale o espera y regresa
+
+# 4 RELACIONES
+((Ana estudia y aprende) o descansa) y celebra
+Pedro corre o camina y llega temprano o regresa
+Si llueve, llevo paraguas y cierro la ventana o regreso
+María canta y sonríe o baila y disfruta
+El perro duerme o descansa y sueña o despierta
+Si trabajo, ahorro y pago o descanso y regreso
+Carlos lee y comprende o escribe y recuerda
+La planta crece o florece y recibe agua o sol
+Si estudio, apruebo y celebro o descanso y repaso
+El tren llega y sale o espera y regresa
+
+# 5 RELACIONES
+(((Ana estudia y aprende) o descansa) y celebra) o comparte
+((Pedro corre o camina) y llega temprano) o regresa y descansa
+Si llueve, (llevo paraguas y cierro la ventana) o regreso y espero
+((María canta y sonríe) o baila) y disfruta o celebra
+((El perro duerme o descansa) y sueña) o despierta y camina
+Si trabajo, (ahorro y pago) o descanso y regreso
+((Carlos lee y comprende) o escribe) y recuerda o aprende
+((La planta crece o florece) y recibe agua) o sol y mejora
+Si estudio, (apruebo y celebro) o descanso y repaso
+((El tren llega y sale) o espera) y regresa o continúa
+Cocino dado que como y comparto
+Llueve ya que llevo un abrigo y camino
+Duermo dado que descanso y sueño
+Canto ya que bailo y sonrío
+Viajo dado que llego y regreso
+Practico ya que mejoro y gano
